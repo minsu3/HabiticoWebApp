@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/habitico-fe/static/css/main.d1b05096.chunk.css",
+    "main.js": "/habitico-fe/static/js/main.4d666aa2.chunk.js",
+    "main.js.map": "/habitico-fe/static/js/main.4d666aa2.chunk.js.map",
+    "runtime-main.js": "/habitico-fe/static/js/runtime-main.7eada60a.js",
+    "runtime-main.js.map": "/habitico-fe/static/js/runtime-main.7eada60a.js.map",
+    "static/js/2.11db9ce4.chunk.js": "/habitico-fe/static/js/2.11db9ce4.chunk.js",
+    "static/js/2.11db9ce4.chunk.js.map": "/habitico-fe/static/js/2.11db9ce4.chunk.js.map",
+    "index.html": "/habitico-fe/index.html",
+    "precache-manifest.c89ca876a466b60f8442aa71818e4c4a.js": "/habitico-fe/precache-manifest.c89ca876a466b60f8442aa71818e4c4a.js",
+    "service-worker.js": "/habitico-fe/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/habitico-fe/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.11db9ce4.chunk.js.LICENSE.txt": "/habitico-fe/static/js/2.11db9ce4.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/habitico-fe/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7eada60a.js",
+    "static/js/2.11db9ce4.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.4d666aa2.chunk.js"
+  ]
+}
