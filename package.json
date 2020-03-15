@@ -2,9 +2,9 @@
   "name": "track-habit-be",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node app.js"
   },
   "author": "Minsu",
   "license": "ISC",
