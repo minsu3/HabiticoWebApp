@@ -1,24 +1,27 @@
 const express = require('express')
 const bodyParser = require("body-parser")
 const app = express()
+
 app.use(bodyParser.json())
 const path = require('path')
 const db = require("./db")
 const collection = "todo"
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html')) //change the file path later  
 })
 
 app.get('/getTodos', (req,res)=> {
-  db.getDB().collection(collection).find({}).toArray((err, documents) => {
-    if(err) {
-      console.log(err)
-    } else {
-      console.log(documents)
-      res.json(documents)
-    }
-  })
+  // db.getDB().collection(collection).find({}).toArray((err, documents) => {
+  //   if(err) {
+  //     console.log(err)
+  //   } else {
+  //     console.log(documents)
+  //     res.json(documents)
+  //   }
+  // })
+  res.json("hello")
 })
 
 app.put('/:id', (req, res) => {
