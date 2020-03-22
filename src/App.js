@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import HabitForm from './components/HabitForm'
 import Habit from './components/Habit'
 
-function App() {
+function App(props) {
   const [habits, setHabits] = useState([
-    { 
-      text: "",
-      isCompleted: true 
+    {
+      text: '',
+      isCompleted: false
     }
   ])
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(`http://localhost:4000/getTodos`)
+      const jsonData = await response.json()
+      console.log(jsonData[0]['todo'])
+
+      const list = jsonData.map(value => value.todo)
+      console.log(list)
+
+      const allHabits = list.map(habit => {
+        const habitObject = {
+          text: habit,
+          isCompleted: false
+        }
+        return habitObject
+      })
+
+      setHabits(allHabits)
+    }
+    
+    getData().catch((err) => console.log(err));
+    
+  }, [props])
 
   const addHabit = text => {
     const newHabits = [...habits, { text }];

@@ -7,9 +7,9 @@ function Habit({ habit, index, completeHabit, removeHabit }) {
       style={{ textDecoration: habit.isCompleted ? "line-through" : "" }}
     >
       {habit.text}
-      <div>
+      <div className="completeButton">
         <button onClick={() => completeHabit(index)}>Complete</button>
-        <button onClick={() => completeHabit(index)}>x</button>
+        <button onClick={() => removeHabit(index)}>x</button>
       </div>
     </div>
   )
