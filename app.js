@@ -5,30 +5,36 @@ const app = express()
 app.use(bodyParser.json())
 const path = require('path')
 const db = require("./db")
-const collection = "todo"
+const collection = "habit"
 
+// Enable CORS
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html')) //change the file path later  
 })
 
-app.get('/getTodos', (req,res)=> {
-  // db.getDB().collection(collection).find({}).toArray((err, documents) => {
-  //   if(err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log(documents)
-  //     res.json(documents)
-  //   }
-  // })
-  res.json("hello")
+app.get('/getList', (req,res)=> {
+  db.getDB().collection(collection).find({}).toArray((err, documents) => {
+    if(err) {
+      console.log(err)
+    } else {
+      console.log(documents)
+      res.json(documents)
+    }
+  })
 })
 
 app.put('/:id', (req, res) => {
-  const todoID = req.params.id
+  const habitID = req.params.id
   const userInput = req.body
  
-  db.getDB().collection(collection).findOneAndUpdate({_id : db.getPrimaryKey(todoID)}, {$set : {todo : userInput.todo}}, {returnOriginal : false},(err, result)=>{
+  db.getDB().collection(collection).findOneAndUpdate({ _id: db.getPrimaryKey(habitID)}, {$set : {habit : userInput.habit}}, {returnOriginal : false},(err, result)=>{
     if(err) {
       console.log(err)
     } else {
@@ -49,9 +55,9 @@ app.post('/', (req, res) => {
 }) 
 
 app.delete('/:id', (req, res) => {
-  const todoId = req.params.id
+  const habitId = req.params.id
 
-  db.getDB().collection(collection).findOneAndDelete({_id: db.getPrimaryKey(todoId)}, (err, result)=> {
+  db.getDB().collection(collection).findOneAndDelete({_id: db.getPrimaryKey(habitId)}, (err, result)=> {
     if(err) {
       console.log(err)
     } else {
@@ -63,11 +69,12 @@ app.delete('/:id', (req, res) => {
 db.connect((err)=> {
   if(err) {
     console.log("unable to connect to database")
+    console.log(err)
     process.exit(1)
   }
   else {
-    app.listen(3000, ()=> {
-      console.log('connected to database, app listening on port 3000')
+    app.listen(4000, ()=> {
+      console.log('connected to database, app listening on port 4000')
     })
   }
 })
