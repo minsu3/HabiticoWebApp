@@ -9,7 +9,7 @@ function Habit({ habit, index, completeHabit, removeHabit }) {
       {habit.text}
       <div className="completeButton">
         <button onClick={() => completeHabit(index)}>Complete</button>
-        <button onClick={() => removeHabit(index)}>x</button>
+        <button onClick={() => removeHabit(habit, index)}>x</button>
       </div>
     </div>
   )
