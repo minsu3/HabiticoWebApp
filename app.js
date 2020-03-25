@@ -74,7 +74,7 @@ db.connect((err)=> {
   }
   else {
     app.listen(4000, ()=> {
-      console.log('connected to database, app listening on port 4000')
+      console.log('Connected to database! App listening on port 4000')
     })
   }
 })
