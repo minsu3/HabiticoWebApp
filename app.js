@@ -4,7 +4,7 @@ const app = express()
 
 app.use(bodyParser.json())
 const path = require('path')
-const db = require("./db")
+const db = require("./db") // imported getDB, connect, getPrimaryKey
 const collection = "habit"
 
 // Enable CORS
