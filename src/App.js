@@ -3,6 +3,7 @@ import './App.css';
 import HabitForm from './components/HabitForm'
 import Habit from './components/Habit'
 
+
 function App(props) {
 
   const [habits, setHabits] = useState([
@@ -38,7 +39,7 @@ function App(props) {
     // make a POST request
     const url = "http://localhost:4000/";
     const bodyObj = {
-        "habit": text
+      "habit": text
     }
     const otherParam = {
       method: "POST",
@@ -61,15 +62,29 @@ function App(props) {
     setHabits(newHabits)
   }
 
+  const updateHabit = (habit, index) => {
+    const newHabits = [...habits];
+    const url = `http://localhost:4000/${habit.id}`;
+    const param = {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(habit) 
+    }
+    fetch(url, param)
+      .then(res => res.json())
+      .catch(err => console.log("Could not update habit \n", err))
+  }
+
   const removeHabit = (habit, index) => {
     const newHabits = [...habits];
     
-    console.log(habit)
     fetch(`http://localhost:4000/${habit.id}`, { method: "DELETE" })
-    .then(res => res.json())
-    .catch(err => console.log('Could not delete habit \n', err))
-    newHabits.splice(index, 1);
-    setHabits(newHabits);
+      .then(res => res.json())
+      .catch(err => console.log('Could not delete habit \n', err))
+      newHabits.splice(index, 1);
+      setHabits(newHabits);
   };
 
   return (
@@ -84,7 +99,9 @@ function App(props) {
             removeHabit={removeHabit}
           />
         ))}
-        <HabitForm addHabit={addHabit} />
+        <HabitForm 
+          addHabit={addHabit} 
+        />
       </div>
     </div>
   );

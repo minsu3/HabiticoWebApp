@@ -11,15 +11,17 @@ function HabitForm({ addHabit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-      />
-    </form>
-  )
+    <div>
+      <form onSubmit={handleSubmit} >
+        <input
+          type="text"
+          className="input"
+          value={value}
+          onChange={e => setValue(e.target.value)}
+        />
+      </form>
+    </div>
+  );
 }
 
 export default HabitForm
