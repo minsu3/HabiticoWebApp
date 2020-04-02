@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './List.css';
 import HabitForm from './components/HabitForm'
 import Habit from './components/Habit'
 
-
-function App(props) {
-
+function List(props) {
   const [habits, setHabits] = useState([
     {
       text: '',
@@ -62,15 +60,19 @@ function App(props) {
     setHabits(newHabits)
   }
 
-  const updateHabit = (habit, index) => {
-    const newHabits = [...habits];
-    const url = `http://localhost:4000/${habit.id}`;
+  const updateHabit = (id, text, index) => {
+    console.log(id, text, index)
+    const url = `http://localhost:4000/${id}`;
+    const bodyObj = {
+      "habit": text
+    }
     const param = {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(habit) 
+
+      body: JSON.stringify(bodyObj) 
     }
     fetch(url, param)
       .then(res => res.json())
@@ -89,6 +91,7 @@ function App(props) {
 
   return (
     <div className="app">
+      <h1 className="title">Habit Lists</h1>
       <div className="habit-list">
         {habits.map((habit, index) => (
           <Habit
@@ -96,6 +99,7 @@ function App(props) {
             index={index}
             habit={habit}
             completeHabit={completeHabit}
+            updateHabit={updateHabit}
             removeHabit={removeHabit}
           />
         ))}
@@ -107,4 +111,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default List;

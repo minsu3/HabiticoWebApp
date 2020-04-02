@@ -16,10 +16,12 @@ function HabitForm({ addHabit }) {
         <input
           type="text"
           className="input"
+          placeholder="Good or bad habits..."
           value={value}
           onChange={e => setValue(e.target.value)}
         />
       </form>
+      
     </div>
   );
 }

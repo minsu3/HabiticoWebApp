@@ -1,9 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 function Home() {
   return (
-    <h1>Home Page</h1>
+    <div className="main">
+      <h1 className="title">Habitico Home Page</h1>
+    </div>
   )
 }
 
-export default Home;
+export default Home

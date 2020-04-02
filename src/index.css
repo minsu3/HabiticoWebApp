@@ -9,5 +9,25 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
+
+.title {
+  text-align: center;
+}
+
+.main {
+  background: #209cee;
+  height: 100vh;
+}
+
+.text {
+  font-size: large;
+}
+
+
+
+
+
+
+

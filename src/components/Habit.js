@@ -1,35 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Button from "react-bootstrap/Button";
+import UpdateForm from './UpdateForm'
 
 function Habit({ habit, index, completeHabit, updateHabit, removeHabit }) {
-  const [value, setValue] = useState("")
 
   const lineThrough = {
     textDecoration: habit.isCompleted ? "line-through" : ""
   }
 
-  const updateForm = {
-    display: "none"
-  }
-
-  const toggleBodyForm = () => {
-    const formElement = document.getElementById('form')
-    formElement.style = { 
-      display: 'block'
-    }
-  }
-
   return (
-    <div>
-      <div className="habit" id={index} style={lineThrough}>
-        {habit.text}
+    <div className="habit">
+      <div id={index} style={lineThrough}>
+        <h2 className="text">{habit.text}</h2>
       </div>
-      <form style={updateForm} id="form">
-        <input type="text" className="input" />
-      </form>
       <div className="completeButton">
-        <button onClick={() => completeHabit(index)}>Complete</button>
-        <button onClick={() => removeHabit(habit, index)}>x</button>
-        <button onClick={() => toggleBodyForm()}>Edit</button>
+        <UpdateForm 
+          id={habit.id}
+          text={habit.text}
+          index={index}
+          updateHabit={updateHabit}
+        />
+        <Button 
+          variant="outline-primary" 
+          onClick={() => completeHabit(index)}
+        >
+          Complete
+        </Button>{" "}
+        <Button
+          variant="outline-primary"
+          onClick={() => removeHabit(habit, index)}
+        >
+          Delete
+        </Button>{" "}
       </div>
     </div>
   );
