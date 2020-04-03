@@ -11,7 +11,7 @@ export default (
     <Switch>
       <Route exact path='/' component={ Home } />
       <Route path='/home' component={ Home } />
-      <Route path='/list' component={ List } />
+      <Route path='/todo' component={ List } />
       <Route path='/login' component={ Login } />
       <Route path='/about' component={ About } />
     </Switch>

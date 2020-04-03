@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './List.css';
-import HabitForm from './components/HabitForm'
+import AddForm from './components/AddForm'
 import Habit from './components/Habit'
 
 function List(props) {
@@ -71,7 +71,6 @@ function List(props) {
       headers: {
         'Content-Type': 'application/json'
       },
-
       body: JSON.stringify(bodyObj) 
     }
     fetch(url, param)
@@ -95,6 +94,8 @@ function List(props) {
       <div className="habit-list">
         {habits.map((habit, index) => (
           <Habit
+            id={habit.id}
+            text={habit.text}
             key={index}
             index={index}
             habit={habit}
@@ -103,9 +104,7 @@ function List(props) {
             removeHabit={removeHabit}
           />
         ))}
-        <HabitForm 
-          addHabit={addHabit} 
-        />
+        <AddForm addHabit={addHabit} />
       </div>
     </div>
   );
