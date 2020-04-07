@@ -28,28 +28,20 @@ function Habit({ id, text, habit, index, completeHabit, updateHabit, removeHabit
     console.log(formState);
     updateHabit(id, text, index);
     // updateHabitText()
-  };
+  };  
 
   const lineThrough = {
     textDecoration: habit.isCompleted ? "line-through" : ""
   }
 
-  // // create a function that changes the habit.text 
-  // const updateHabitText = () => {
-
-  // }
-
   return (
     
     <div className="habit">
-
       <div id={index} style={lineThrough}>
-
-        <Nav.Link href={`/habit`}>
+        <Nav.Link href={'/list/'+habit.text+'/'+id}>
           <h2 className="text">{habit.text}</h2>
         </Nav.Link>
       </div>
-
       <div className="completeButton">
         <Form onSubmit={event => onSubmit(event)}>
           <Form.Group controlId="formBasicEmail">

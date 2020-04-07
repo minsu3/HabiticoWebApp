@@ -62,7 +62,7 @@ function List(props) {
 
   const updateHabit = (id, text, index) => {
     console.log(id, text, index)
-    const url = `http://localhost:4000/${id}`;
+    const url = `http://localhost:4000//${id}`;
     const bodyObj = {
       "habit": text
     }
@@ -90,7 +90,9 @@ function List(props) {
 
   return (
     <div className="app">
-      <h1 className="title">Habit Lists</h1>
+    <div className="wrap">
+      <h1 className="title">Todo</h1>
+      <h2 className="sub-title">What is your main focus for today?</h2>
       <div className="habit-list">
         {habits.map((habit, index) => (
           <Habit
@@ -106,6 +108,7 @@ function List(props) {
         ))}
         <AddForm addHabit={addHabit} />
       </div>
+    </div>
     </div>
   );
 }

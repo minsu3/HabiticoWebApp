@@ -6,12 +6,12 @@ function Header() {
   return (
       <>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href={"/home"}>Habitico</Navbar.Brand>
+          <Navbar.Brand href={"/habitico-fe"}>Habitico</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href={"/todo"}>Todo List</Nav.Link>
-            <Nav.Link href={"/habit"}>Habits</Nav.Link>
-            <Nav.Link href={"/about"}>About Us</Nav.Link>
-            <Nav.Link href={"/login"}>Sign In</Nav.Link>
+            <Nav.Link href={"/list"}>Todo List</Nav.Link>
+            <Nav.Link href={"/quitthat"}>Quit Bad Habits</Nav.Link>
+            <Nav.Link href={"/about"} style={{ position: 'absolute', right: '80px' }}>About</Nav.Link>
+            <Nav.Link href={"/login"} style={{position: 'absolute', right: '10px'}}>Sign In</Nav.Link>
           </Nav>
         </Navbar>
       </>

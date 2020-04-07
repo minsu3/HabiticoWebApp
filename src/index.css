@@ -25,9 +25,12 @@ code {
   font-size: large;
 }
 
+.sub-title {
+  text-align: center;
+  font-size: large;
+}
 
-
-
-
-
-
+.wrap {
+  position: relative;
+  top: 40px;
+}
