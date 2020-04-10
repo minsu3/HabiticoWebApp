@@ -43,6 +43,7 @@ function Quit(props) {
       console.log((res))
     })
     .catch(error => console.log(error))
+  }
 
     const updateHabit = (id, text, index) => {
       console.log(id, text, index)
@@ -70,19 +71,16 @@ function Quit(props) {
         .catch(err => console.log('Could not delete habit \n', err))
       newHabits.splice(index, 1);
       setQuit(newHabits);
-    };  }
+    };
 
   return (
     <div className="main">
       <div className="wrap">
         <h1 className="title">Quit Bad Habits</h1>
         <h2 className="sub-title">Stop smoking, drinking, & more</h2>
-
         <div className="habit-list">
-          
         </div>
       </div>
-
     </div>
   )
 }

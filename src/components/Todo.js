@@ -3,8 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form"
 import Nav from "react-bootstrap/Nav";
 
-function Habit({ id, text, habit, index, completeHabit, updateHabit, removeHabit }) {
-
+function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, updateTodoText }) {
   const [formState, setFormState] = useState({
     display: "none",
     formValue: ""
@@ -25,53 +24,56 @@ function Habit({ id, text, habit, index, completeHabit, updateHabit, removeHabit
   const onSubmit = event => {
     event.preventDefault();
     text = formState.formValue;
-    console.log(formState);
-    updateHabit(id, text, index);
-    // updateHabitText()
-  };  
+    updateTodo(id, text, index);
+    console.log(text)
+    updateTodoText(text, index);
+    toggleBodyForm(event)
+  };
+
+  const todoText = todo.text;
+  console.log("todoText: ", todoText);
 
   const lineThrough = {
-    textDecoration: habit.isCompleted ? "line-through" : ""
+    textDecoration: todo.isCompleted ? "line-through" : ""
   }
 
   return (
-    
     <div className="habit">
       <div id={index} style={lineThrough}>
-        <Nav.Link href={'/list/'+habit.text+'/'+id}>
-          <h2 className="text">{habit.text}</h2>
+        <Nav.Link href={"/list/" + text + "/" + index}>
+          <h2 className="text">{todoText}</h2>
         </Nav.Link>
       </div>
       <div className="completeButton">
-        <Form onSubmit={event => onSubmit(event)}>
+        <Form onSubmit={(event) => onSubmit(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control
               type="text"
               placeholder="Update todo..."
               style={formState}
               className="update-input"
-              onChange={event => onChange(event)}
+              onChange={(event) => onChange(event)}
             />
           </Form.Group>
         </Form>
         <Button
           className="button"
           variant="outline-primary"
-          onClick={event => toggleBodyForm(event)}
+          onClick={(event) => toggleBodyForm(event)}
         >
           Edit
         </Button>{" "}
         <Button
           className="button"
           variant="outline-primary"
-          onClick={() => completeHabit(index)}
+          onClick={() => completeTodo(index)}
         >
           Complete
         </Button>{" "}
         <Button
           className="button"
           variant="outline-primary"
-          onClick={() => removeHabit(habit, index)}
+          onClick={() => removeTodo(todo, index)}
         >
           Delete
         </Button>{" "}
@@ -80,4 +82,4 @@ function Habit({ id, text, habit, index, completeHabit, updateHabit, removeHabit
   );
 }
 
-export default Habit
+export default Todo

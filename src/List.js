@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './List.css';
 import AddForm from './components/AddForm'
-import Habit from './components/Habit'
+import Todo from './components/Todo'
 
 function List(props) {
-  const [habits, setHabits] = useState([
+  const [todos, setTodos] = useState([
     {
       text: '',
       id: null,
@@ -15,29 +15,27 @@ function List(props) {
     async function getData() {
       const response = await fetch(`http://localhost:4000/getList`)
       const jsonData = await response.json()
-      const allHabits = jsonData.map(habit => {
-        // habit.habit
-        // habit._id
-        const habitObject = {
-          text: habit.habit,
-          id: habit._id,
+      const allTodos = jsonData.map(todo => {
+        const todoObject = {
+          text: todo.todo,
+          id: todo._id,
           isCompleted: false
         }
-        return habitObject
+        return todoObject
       })
-      setHabits(allHabits)
+      setTodos(allTodos)
     }
     getData().catch((err) => console.log(err));
   }, [props])
 
-  const addHabit = text => {
-    const newHabits = [...habits, { text }];
-    setHabits(newHabits);
-    
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+
     // make a POST request
     const url = "http://localhost:4000/";
     const bodyObj = {
-      "habit": text
+      "todo": text
     }
     const otherParam = {
       method: "POST",
@@ -54,61 +52,68 @@ function List(props) {
       .catch(error => console.log(error));
   }
 
-  const completeHabit = index => {
-    const newHabits = [...habits]
-    newHabits[index].isCompleted = true
-    setHabits(newHabits)
+  const completeTodo = index => {
+    const newTodos = [...todos]
+    newTodos[index].isCompleted = true
+    setTodos(newTodos);
   }
 
-  const updateHabit = (id, text, index) => {
+  const updateTodoText = (text, index) => {
+    const newTodos = [...todos];
+    newTodos[index].text = text
+    setTodos(newTodos)
+  };
+
+  const updateTodo = (id, text, index) => {
     console.log(id, text, index)
-    const url = `http://localhost:4000//${id}`;
+    const url = `http://localhost:4000/${id}`;
     const bodyObj = {
-      "habit": text
+      "todo": text
     }
     const param = {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(bodyObj) 
+      body: JSON.stringify(bodyObj)
     }
     fetch(url, param)
       .then(res => res.json())
-      .catch(err => console.log("Could not update habit \n", err))
+      .catch(err => console.log("Could not update todo \n", err))
   }
 
-  const removeHabit = (habit, index) => {
-    const newHabits = [...habits];
+  const removeTodo = (todo, index) => {
+    const newTodos = [...todos];
     
-    fetch(`http://localhost:4000/${habit.id}`, { method: "DELETE" })
+    fetch(`http://localhost:4000/${todo.id}`, { method: "DELETE" })
       .then(res => res.json())
-      .catch(err => console.log('Could not delete habit \n', err))
-      newHabits.splice(index, 1);
-      setHabits(newHabits);
+      .catch(err => console.log('Could not delete todo \n', err))
+      newTodos.splice(index, 1);
+      setTodos(newTodos);
   };
 
   return (
     <div className="app">
-    <div className="wrap">
-      <h1 className="title">Todo</h1>
-      <h2 className="sub-title">What is your main focus for today?</h2>
-      <div className="habit-list">
-        {habits.map((habit, index) => (
-          <Habit
-            id={habit.id}
-            text={habit.text}
-            key={index}
-            index={index}
-            habit={habit}
-            completeHabit={completeHabit}
-            updateHabit={updateHabit}
-            removeHabit={removeHabit}
-          />
-        ))}
-        <AddForm addHabit={addHabit} />
+      <div className="wrap">
+        <h1 className="title">Todo</h1>
+        <h2 className="sub-title">What is your main focus for today?</h2>
+        <div className="habit-list">
+          {todos.map((todo, index) => (
+            <Todo
+              id={todo.id}
+              text={todo.text}
+              key={index}
+              index={index}
+              todo={todo}
+              completeTodo={completeTodo}
+              updateTodo={updateTodo}
+              removeTodo={removeTodo}
+              updateTodoText={updateTodoText}
+            />
+          ))}
+          <AddForm addTodo={addTodo} />
+        </div>
       </div>
-    </div>
     </div>
   );
 }

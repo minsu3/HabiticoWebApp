@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 
-function AddForm({ addHabit }) {
+function AddForm({ addTodo }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault()
     if (!value) return
-    addHabit(value);
+    addTodo(value);
     setValue("")
   }
 
