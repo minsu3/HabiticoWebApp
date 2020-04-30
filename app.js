@@ -5,7 +5,8 @@ const app = express()
 app.use(bodyParser.json())
 const path = require('path')
 const db = require("./db") // imported getDB, connect, getPrimaryKey
-const collection = "todo"
+const collectionTodo = "todo"
+const collectionHabit = "habit"
 
 // Enable CORS
 app.use(function (req, res, next) {
@@ -15,13 +16,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+// server calls the database 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html')) //change the file path later  
+  res.sendFile(path.join(__dirname, 'index.html')) //send static html to user
 })
 
 // endpoints for todo
 app.get('/getList', (req,res)=> {
-  db.getDB().collection(collection).find({}).toArray((err, documents) => {
+  // return document from the todo collection
+  db.getDB().collection(collectionTodo).find({}).toArray((err, documents) => {
     if(err) {
       console.log(err)
     } else {
@@ -35,7 +38,7 @@ app.put('/:id', (req, res) => {
   const todoID = req.params.id
   const userInput = req.body
  
-  db.getDB().collection(collection).findOneAndUpdate({ _id: db.getPrimaryKey(todoID)}, {$set : {todo : userInput.todo}}, {returnOriginal : false},(err, result)=>{
+  db.getDB().collection(collectionTodo).findOneAndUpdate({ _id: db.getPrimaryKey(todoID)}, {$set : {todo : userInput.todo}}, {returnOriginal : false},(err, result)=>{
     if(err) {
       console.log(err)
     } else {
@@ -46,7 +49,7 @@ app.put('/:id', (req, res) => {
 
 app.post('/', (req, res) => {
   const userInput = req.body
-  db.getDB().collection(collection).insertOne(userInput, (err, result) => {
+  db.getDB().collection(collectionTodo).insertOne(userInput, (err, result) => {
     if(err) {
       console.log(err)
     } else {
@@ -58,7 +61,7 @@ app.post('/', (req, res) => {
 app.delete('/:id', (req, res) => {
   const todoId = req.params.id
 
-  db.getDB().collection(collection).findOneAndDelete({_id: db.getPrimaryKey(todoId)}, (err, result)=> {
+  db.getDB().collection(collectionTodo).findOneAndDelete({_id: db.getPrimaryKey(todoId)}, (err, result)=> {
     if(err) {
       console.log(err)
     } else {
@@ -69,7 +72,7 @@ app.delete('/:id', (req, res) => {
 
 // endpoints for quit bad habits
 app.get('/habits', (req, res) => {
-db.getDB().collection(collection).find({}).toArray((err, documents) => {
+  db.getDB().collection(collectionHabit).find({}).toArray((err, documents) => {
     if (err) {
       console.log(err)
     } else {
@@ -83,7 +86,7 @@ app.put('/habits/:id', (req, res) => {
   const habitID = req.params.id
   const userInput = req.body
 
-  db.getDB().collection(collection).findOneAndUpdate({ _id: db.getPrimaryKey(habitID) }, { $set: { habit: userInput.habit } }, { returnOriginal: false }, (err, result) => {
+  db.getDB().collection(collectionHabit).findOneAndUpdate({ _id: db.getPrimaryKey(habitID) }, { $set: { habit: userInput.habit } }, { returnOriginal: false }, (err, result) => {
     if (err) {
       console.log(err)
     } else {
@@ -94,7 +97,7 @@ app.put('/habits/:id', (req, res) => {
 
 app.post('/habits', (req, res) => {
   const userInput = req.body
-  db.getDB().collection(collection).insertOne(userInput, (err, result) => {
+  db.getDB().collection(collectionHabit).insertOne(userInput, (err, result) => {
     if (err) {
       console.log(err)
     } else {
@@ -105,8 +108,7 @@ app.post('/habits', (req, res) => {
 
 app.delete('/habits/:id', (req, res) => {
   const habitId = req.params.id
-
-  db.getDB().collection(collection).findOneAndDelete({ _id: db.getPrimaryKey(habitId) }, (err, result) => {
+  db.getDB().collection(collectionHabit).findOneAndDelete({ _id: db.getPrimaryKey(habitId) }, (err, result) => {
     if (err) {
       console.log(err)
     } else {

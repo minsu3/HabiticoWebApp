@@ -39,4 +39,4 @@ const getDB = () => {
   return state.db
 }
 
-module.exports = {getDB, connect, getPrimaryKey}
+module.exports = { getDB, connect, getPrimaryKey }
