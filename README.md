@@ -1,2 +1,4 @@
-[Where I got my inspiration](https://jamesclear.com/stop-procrastinating-seinfeld-strategy)
+# Habitico (Productivity App)
 
+## Habit Tracker 
+## Todo List 

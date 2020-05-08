@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form"
-import Nav from "react-bootstrap/Nav";
 
 function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, updateTodoText }) {
   const [formState, setFormState] = useState({
@@ -25,7 +24,6 @@ function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, upd
     event.preventDefault();
     text = formState.formValue;
     updateTodo(id, text, index);
-    console.log(text)
     updateTodoText(text, index);
     toggleBodyForm(event)
   };
@@ -40,9 +38,7 @@ function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, upd
   return (
     <div className="habit">
       <div id={index} style={lineThrough}>
-        <Nav.Link href={"/list/" + text + "/" + index}>
-          <h2 className="text">{todoText}</h2>
-        </Nav.Link>
+        <h2 className="text">{todoText}</h2>
       </div>
       <div className="completeButton">
         <Form onSubmit={(event) => onSubmit(event)}>
@@ -66,7 +62,7 @@ function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, upd
         <Button
           className="button"
           variant="outline-primary"
-          onClick={() => completeTodo(index)}
+          onClick={() => completeTodo(todo, index)}
         >
           Complete
         </Button>{" "}

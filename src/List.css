@@ -3,7 +3,6 @@
   padding-top: 30px;
   height: 100vh;
 }
-
 .habit-list {
   position: relative;
   top: 30px;
@@ -15,13 +14,12 @@
   width: 90%;
   padding: 10px;
 }
-
 .habit {
   background: #fff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-  padding: 13px 10px;
+  padding: 20px 10px;
   font-size: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -29,16 +27,19 @@
   position: relative;
   min-height: 10px;
 }
-
 .completeButton {
   position: absolute;
   right: 10px;
   display: inline-flex;
 }
-
 .button {
   margin: 2px;
   max-height: 40px;
+}
+
+.input {
+  position: relative;
+  top: 8px;
 }
 
 .update-input {
@@ -55,3 +56,4 @@
   display: block;
   width: 100%
 }
+

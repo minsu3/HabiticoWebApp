@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import QuitList from './QuitList'
+import Insert from './Insert'
+import '../Quit.css'
+import Button from "react-bootstrap/Button";
+
 
 function Quit(props) {
-  const [quit, setQuit] = useState([
+  const [quits, setQuit] = useState([
     {
       text:'',
       id: null,
@@ -9,7 +14,7 @@ function Quit(props) {
   ])
   useEffect(() => {
     async function getData() {
-      const response = await fetch("http://localhost:4000/badHabits")
+      const response = await fetch("http://localhost:4000/habits")
       const jsonData = await response.json()
       const allHabits = jsonData.map(habit => {
         const habitObject = {
@@ -24,9 +29,9 @@ function Quit(props) {
   }, [props])
 
   const addHabit = text => {
-    const newHabits = [...quit, { text }]
+    const newHabits = [...quits, { text }]
     setQuit(newHabits)
-    const url = "http://localhost:4000/badHabits"
+    const url = "http://localhost:4000/habits"
     const bodyObj = {
       "habit": text
     }
@@ -47,7 +52,7 @@ function Quit(props) {
 
     const updateHabit = (id, text, index) => {
       console.log(id, text, index)
-      const url = `http://localhost:4000//${id}`;
+      const url = `http://localhost:4000/habits/${id}`;
       const bodyObj = {
         "habit": text
       }
@@ -64,9 +69,9 @@ function Quit(props) {
     }
 
     const removeHabit = (habit, index) => {
-      const newHabits = [...quit];
+      const newHabits = [...quits];
 
-      fetch(`http://localhost:4000/${habit.id}`, { method: "DELETE" })
+      fetch(`http://localhost:4000/habits/${habit.id}`, { method: "DELETE" })
         .then(res => res.json())
         .catch(err => console.log('Could not delete habit \n', err))
       newHabits.splice(index, 1);
@@ -77,13 +82,34 @@ function Quit(props) {
     <div className="main">
       <div className="wrap">
         <h1 className="title">Quit Bad Habits</h1>
-        <h2 className="sub-title">Stop smoking, drinking, & more</h2>
-        <div className="habit-list">
+        <h2 className="sub-title">
+          Everyone has something they want to quit...
+        </h2>
+        <div>
+          {quits.length ? (
+            quits.map((quit, index) => (
+              <QuitList
+                id={quit.id}
+                text={quit.text}
+                key={index}
+                index={index}
+                quit={quit}
+                addHabit={addHabit}
+                updateHabit={updateHabit}
+                removeHabit={removeHabit}
+              />
+            ))
+          ) : (
+            <div className="button-container">
+              <Button className="start" variant="secondary" href={"/insert"}>
+                Add to the quit list
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
-
 
 export default Quit

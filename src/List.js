@@ -13,7 +13,7 @@ function List(props) {
   ])
   useEffect(() => {
     async function getData() {
-      const response = await fetch(`http://localhost:4000/getList`)
+      const response = await fetch(`https://vast-anchorage-73432.herokuapp.com/getList`)
       const jsonData = await response.json()
       const allTodos = jsonData.map(todo => {
         const todoObject = {
@@ -33,7 +33,7 @@ function List(props) {
     setTodos(newTodos);
 
     // make a POST request
-    const url = "http://localhost:4000/";
+    const url = "https://vast-anchorage-73432.herokuapp.com/";
     const bodyObj = {
       "todo": text
     }
@@ -52,10 +52,11 @@ function List(props) {
       .catch(error => console.log(error));
   }
 
-  const completeTodo = index => {
+  const completeTodo = (todo, index) => {
     const newTodos = [...todos]
     newTodos[index].isCompleted = true
     setTodos(newTodos);
+    removeTodo(todo)
   }
 
   const updateTodoText = (text, index) => {
@@ -66,12 +67,12 @@ function List(props) {
 
   const updateTodo = (id, text, index) => {
     console.log(id, text, index)
-    const url = `http://localhost:4000/${id}`;
+    const url = `https://vast-anchorage-73432.herokuapp.com/${id}`;
     const bodyObj = {
       "todo": text
     }
     const param = {
-      method: "PUT",
+      method: "PUT", 
       headers: {
         'Content-Type': 'application/json'
       },
@@ -85,14 +86,17 @@ function List(props) {
   const removeTodo = (todo, index) => {
     const newTodos = [...todos];
     
-    fetch(`http://localhost:4000/${todo.id}`, { method: "DELETE" })
+    fetch(`https://vast-anchorage-73432.herokuapp.com/${todo.id}`, { method: "DELETE" })
       .then(res => res.json())
       .catch(err => console.log('Could not delete todo \n', err))
       newTodos.splice(index, 1);
       setTodos(newTodos);
   };
 
-  return (
+  if (todos === null) {
+    return <h3>Loading...</h3>
+  } else {
+    return (
     <div className="app">
       <div className="wrap">
         <h1 className="title">Todo</h1>
@@ -115,7 +119,7 @@ function List(props) {
         </div>
       </div>
     </div>
-  );
+  )}
 }
 
 export default List;

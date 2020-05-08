@@ -4,20 +4,26 @@ import List from '../List'
 import Home from '../components/Home'
 import Login from '../components/Login'
 import About from '../components/About'
-import HabitInfo from '../components/HabitInfo'
+import QuitInfo from '../components/QuitInfo'
 import Quit from '../components/Quit'
+import Insert from '../components/Insert'
 
 
 export default (
   <div>
     <Switch>
       <Route exact path='/' component={ Home } />
-      <Route path='/habitico-fe' component={ Home } />
       <Route exact path='/list' component={ List } />
-      <Route path='/list/:id' render={(props) => {
+      {/* <Route path='/list/:id' render={(props) => {
         return <HabitInfo id={props.match.params.id}/>
+      }} /> */}
+      <Route exact path='/quit' component={ Quit } />
+      <Route exact path='/insert' component={ Insert } />
+      <Route path='/insert/time' component={ Insert } />
+      <Route path='/insert/price' component={ Insert } />
+      <Route path='/quit/:id' render={(props) => {
+        return <QuitInfo id={props.match.params.id}/>
       }} />
-      <Route exact path='/quitthat' component={ Quit } />
       <Route path='/about' component={ About } />
       <Route path='/login' component={ Login } />
     </Switch>
