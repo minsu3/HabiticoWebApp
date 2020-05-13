@@ -13,17 +13,17 @@ export default (
   <div>
     <Switch>
       <Route exact path='/' component={ Home } />
-      <Route exact path='/list' component={ List } />
+      <Route path='/list' component={ List } />
       {/* <Route path='/list/:id' render={(props) => {
         return <HabitInfo id={props.match.params.id}/>
       }} /> */}
       <Route exact path='/quit' component={ Quit } />
-      <Route exact path='/insert' component={ Insert } />
-      <Route path='/insert/time' component={ Insert } />
-      <Route path='/insert/price' component={ Insert } />
       <Route path='/quit/:id' render={(props) => {
         return <QuitInfo id={props.match.params.id}/>
       }} />
+      <Route exact path='/insert' component={ Insert } />
+      <Route path='/insert/time' component={ Insert } />
+      <Route path='/insert/price' component={ Insert } />
       <Route path='/about' component={ About } />
       <Route path='/login' component={ Login } />
     </Switch>

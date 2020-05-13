@@ -4,7 +4,6 @@ import Insert from './Insert'
 import '../Quit.css'
 import Button from "react-bootstrap/Button";
 
-
 function Quit(props) {
   const [quits, setQuit] = useState([
     {
@@ -14,7 +13,9 @@ function Quit(props) {
   ])
   useEffect(() => {
     async function getData() {
-      const response = await fetch("http://localhost:4000/habits")
+      const response = await fetch(
+        "https://vast-anchorage-73432.herokuapp.com/habits"
+      );
       const jsonData = await response.json()
       const allHabits = jsonData.map(habit => {
         const habitObject = {
@@ -28,31 +29,10 @@ function Quit(props) {
     getData().catch((err) => console.log(err))
   }, [props])
 
-  const addHabit = text => {
-    const newHabits = [...quits, { text }]
-    setQuit(newHabits)
-    const url = "http://localhost:4000/habits"
-    const bodyObj = {
-      "habit": text
-    }
-    const param = {
-      method: "POST",
-      body: JSON.stringify(bodyObj),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }
-    fetch(url, param)
-    .then(results => results.json)
-    .then(res => {
-      console.log((res))
-    })
-    .catch(error => console.log(error))
-  }
 
     const updateHabit = (id, text, index) => {
       console.log(id, text, index)
-      const url = `http://localhost:4000/habits/${id}`;
+      const url = `https://vast-anchorage-73432.herokuapp.com/habits/${id}`;
       const bodyObj = {
         "habit": text
       }
@@ -70,12 +50,15 @@ function Quit(props) {
 
     const removeHabit = (habit, index) => {
       const newHabits = [...quits];
-
-      fetch(`http://localhost:4000/habits/${habit.id}`, { method: "DELETE" })
-        .then(res => res.json())
-        .catch(err => console.log('Could not delete habit \n', err))
-      newHabits.splice(index, 1);
       setQuit(newHabits);
+      newHabits.splice(index, 1);
+
+      fetch(`https://vast-anchorage-73432.herokuapp.com/habits/${habit.id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .catch((err) => console.log("Could not delete habit \n", err));
+      
     };
 
   return (
@@ -94,16 +77,17 @@ function Quit(props) {
                 key={index}
                 index={index}
                 quit={quit}
-                addHabit={addHabit}
                 updateHabit={updateHabit}
                 removeHabit={removeHabit}
               />
             ))
-          ) : (
+          ) 
+           : (
             <div className="button-container">
               <Button className="start" variant="secondary" href={"/insert"}>
                 Add to the quit list
               </Button>
+            
             </div>
           )}
         </div>
