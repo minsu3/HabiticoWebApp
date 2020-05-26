@@ -12,7 +12,6 @@ import Insert from '../components/Insert'
 export default (
   <div>
     <Switch>
-      <Route path="/habitico/list" component={List} />
       {/* <Route path='/list/:id' render={(props) => {
         return <HabitInfo id={props.match.params.id}/>
       }} /> */}
@@ -28,6 +27,7 @@ export default (
       <Route path="/habitico/insert/price" component={Insert} />
       <Route path="/habitico/about" component={About} />
       <Route path="/habitico/login" component={Login} />
+      <Route path="/list" component={List} />
       <Route path="/habitico" component={Home} />
     </Switch>
   </div>
