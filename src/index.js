@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Router basename='/habitico'>
+  <Router>
     <Main />
   </Router>, document.getElementById('root')
 );
