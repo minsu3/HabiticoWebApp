@@ -27,7 +27,7 @@ export default (
       <Route path="/habitico/insert/price" component={Insert} />
       <Route path="/habitico/about" component={About} />
       <Route path="/habitico/login" component={Login} />
-      <Route exact path="/habitico/list" component={List} />
+      <Route path="/list" component={List} />
       <Route exact path="/habitico" component={Home} />
     </Switch>
   </div>
