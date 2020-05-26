@@ -9,7 +9,6 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Router>
-    <Route exact path="/habitico/list" component={List} />
     <Main />
   </Router>,
   document.getElementById("root")
