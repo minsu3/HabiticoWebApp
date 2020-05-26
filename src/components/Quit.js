@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import QuitList from './QuitList'
-import Insert from './Insert'
+// import Insert from './Insert'
 import '../Quit.css'
 import Button from "react-bootstrap/Button";
 
