@@ -13,7 +13,7 @@ export default (
   <div>
     <Switch>
       <Route exact path='/' component={ Home } />
-      <Route path='/list' component={ List } />
+      <Route path='/habitico/list' component={ List } />
       {/* <Route path='/list/:id' render={(props) => {
         return <HabitInfo id={props.match.params.id}/>
       }} /> */}
