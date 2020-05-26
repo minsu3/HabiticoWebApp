@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/habitico/precache-manifest.d0238ccef4cf20cbb4730543958d96d7.js"
+  "/habitico/precache-manifest.79702275c823d934369f104b4cf29512.js"
 );
 
 self.addEventListener('message', (event) => {
