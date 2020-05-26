@@ -1,4 +1,9 @@
-# Habitico (Productivity App)
+# Habitico
+### Productivity App that Tracks Your Habits!
+* in progress 
 
-## Habit Tracker 
-## Todo List 
+## Technologies Used
+* React
+* Node
+* Express
+* MongoDB
