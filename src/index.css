@@ -16,8 +16,21 @@ code {
   text-align: center;
 }
 .main {
-  background: #209cee;
+  background-color: #209cee;
   height: 100vh;
+}
+.main-quit {
+  background-color: cadetblue;
+  height: 100vh;
+}
+.main-focus {
+  background-color: tomato;
+  height: 100vh;
+}
+.insert-title {
+  text-align: center;
+  position: relative;
+  top: 40px;
 }
 .text {
   font-size: large;
