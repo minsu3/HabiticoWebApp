@@ -1,0 +1,54 @@
+.app {
+  background-color: rgb(155, 190, 253);
+  height: 100vh;
+}
+.habit-list {
+  position: relative;
+  top: 30px;
+  background: #e8e8e8;
+  border-radius: 6px;
+  padding: 5px;
+  max-width: 1000px;
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+.habit {
+  background: #fff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  padding: 20px 10px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: 10px;
+}
+.completeButton {
+  position: absolute;
+  right: 10px;
+  display: inline-flex;
+}
+.button {
+  margin: 2px;
+  max-height: 40px;
+}
+.input {
+  position: relative;
+  top: 8px;
+}
+.update-input {
+  position: absolute;
+  right: 240px;
+  top: 2px;
+  max-width: 250px;
+  width: 100%
+}
+.text {
+  position: relative;
+  top: 3px;
+  display: block;
+  width: 100%
+}
