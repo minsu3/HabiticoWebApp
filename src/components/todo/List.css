@@ -2,6 +2,7 @@
   background-color: rgb(155, 190, 253);
   height: 100vh;
 }
+
 .habit-list {
   position: relative;
   top: 30px;
@@ -13,6 +14,7 @@
   width: 90%;
   padding: 10px;
 }
+
 .habit {
   background: #fff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
@@ -26,19 +28,23 @@
   position: relative;
   min-height: 10px;
 }
+
 .completeButton {
   position: absolute;
   right: 10px;
   display: inline-flex;
 }
+
 .button {
   margin: 2px;
   max-height: 40px;
 }
+
 .input {
   position: relative;
   top: 8px;
 }
+
 .update-input {
   position: absolute;
   right: 240px;
@@ -46,6 +52,7 @@
   max-width: 250px;
   width: 100%
 }
+
 .text {
   position: relative;
   top: 3px;
