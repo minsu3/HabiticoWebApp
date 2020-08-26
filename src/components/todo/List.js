@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './List.css';
+import styles from './list.module.css';
 import AddForm from './AddForm'
 import Todo from './Todo'
 
@@ -93,11 +93,13 @@ function List(props) {
   };
 
   return (
-    <div className="app">
-      <div className="wrap">
-        <h1 className="title">Todo</h1>
-        <h2 className="sub-title">What is your main focus for today?</h2>
-        <div className="habit-list">
+    <div className={styles.app}>
+      <div className={styles.main}>
+        <div className={styles.titleContainer}>
+          <h1>Todo</h1>
+          <h3>What is your main focus for today?</h3>
+        </div>
+        <div className={styles.container}>
           {!todos.length 
           ? (
             <h4>Today I will finish...</h4>) 

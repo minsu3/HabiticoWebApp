@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form"
+import Form from "react-bootstrap/Form";
+import styles from "./list.module.css";
 
 function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, updateTodoText }) {
   const [formState, setFormState] = useState({
@@ -36,38 +37,40 @@ function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, upd
   }
 
   return (
-    <div className="habit">
-      <div id={index} style={lineThrough}>
-        <h2 className="text">{todoText}</h2>
+    <div className={styles.habit}>
+      <div className={styles.textContainer}>
+        <h2 id={index} style={lineThrough} className={styles.text}>
+          {todoText}
+        </h2>
       </div>
-      <div className="completeButton">
+      <div className={styles.completeButton}>
         <Form onSubmit={(event) => onSubmit(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control
               type="text"
               placeholder="Update todo..."
               style={formState}
-              className="update-input"
+              className={styles.updateInput}
               onChange={(event) => onChange(event)}
             />
           </Form.Group>
         </Form>
         <Button
-          className="button"
+          className={styles.button}
           variant="outline-primary"
           onClick={(event) => toggleBodyForm(event)}
         >
           Edit
         </Button>{" "}
         <Button
-          className="button"
+          className={styles.button}
           variant="outline-primary"
           onClick={() => completeTodo(todo, index)}
         >
           Complete
         </Button>{" "}
         <Button
-          className="button"
+          className={styles.button}
           variant="outline-primary"
           onClick={() => removeTodo(todo, index)}
         >

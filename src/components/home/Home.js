@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import sharedStyles from "../../global.module.css";
 import styles from './home.module.css'
 
 function Home() {
@@ -12,15 +13,13 @@ function Home() {
     });
   
   return (
-    <div className={styles.main}>
-      <div>
-        <h1 className={styles.title}>Habitico</h1>
-        <h2 className={styles.subTitle}>Increase Your Productivity</h2>
-        <div className={styles.signup}>
-          <Link to="/signup">
-            <button className={styles.signupButton}>Sign Up</button>
-          </Link>
-        </div>
+    <div className={sharedStyles.main}>
+      <h1 className={styles.title}>Habitico</h1>
+      <h2 className={styles.subTitle}>Increase Your Productivity</h2>
+      <div className={styles.signup}>
+        <Link to="/signup">
+          <button className={styles.signupButton}>Sign Up</button>
+        </Link>
       </div>
     </div>
   );
