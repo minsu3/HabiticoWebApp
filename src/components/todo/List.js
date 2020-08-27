@@ -55,7 +55,6 @@ function List(props) {
     const newTodos = [...todos]
     newTodos[index].isCompleted = true
     setTodos(newTodos);
-    completeTodo(todo)
   }
 
   const updateTodoText = (text, index) => {
