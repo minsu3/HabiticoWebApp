@@ -43,7 +43,7 @@ function Todo({ id, text, todo, index, completeTodo, updateTodo, removeTodo, upd
           {todoText}
         </h2>
       </div>
-      <div className={styles.completeButton}>
+      <div className={styles.buttonContainer}>
         <Form onSubmit={(event) => onSubmit(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control
