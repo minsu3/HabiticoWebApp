@@ -34,7 +34,7 @@
   position: relative;
 }
 
-.completeButton {
+.buttonContainer {
   position: absolute;
   right: 10px;
   display: inline-flex;
@@ -54,7 +54,7 @@
   position: absolute;
   right: 240px;
   top: 2px;
-  /* max-width: 250px; */
+  max-width: 250px;
   width: 100%
 }
 
