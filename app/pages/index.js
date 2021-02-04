@@ -1,14 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../shared/header/header";
-import Card from "react-bootstrap/Card";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Header />
+
       <Head>
         <title>HABITICO - Productivity App</title>
         <link rel="icon" href="/favicon.ico" />

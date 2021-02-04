@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../shared/header/header";
 
-const Focus = () => {
+const HabitTracker = () => {
   return (
     <div>
       <Header />
@@ -9,4 +9,4 @@ const Focus = () => {
   );
 };
 
-export default Focus;
+export default HabitTracker;
