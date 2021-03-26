@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/TodoList/list.module.css";
-import AddForm from "../components/TodoList/AddForm";
+import styles from "../styles/pagesStyle/list.module.css";
+import AddForm from "../components/TodoList/addForm";
 import Todo from "../components/TodoList/todo";
-import Header from "../shared/header/header";
+import Header from "../shared/header";
+import Footer from "../shared/footer";
 
 function TodoList(props) {
-  const [todos, setTodos] = useState([
-    {
-      text: "",
-      id: null,
-      isCompleted: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
   useEffect(() => {
     async function getData() {
       const response = await fetch(`http://localhost:4000/getList`);
@@ -33,7 +28,7 @@ function TodoList(props) {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
 
-    const url = "http://localhost:4000/";
+    const url = "";
     const bodyObj = {
       todo: text,
     };
@@ -62,6 +57,10 @@ function TodoList(props) {
     const newTodos = [...todos];
     newTodos[index].text = text;
     setTodos(newTodos);
+  };
+
+  const fetchTodos = async () => {
+    return await fetch("/getTodos");
   };
 
   const updateTodo = (id, text, index) => {
@@ -97,15 +96,13 @@ function TodoList(props) {
   return (
     <div className={styles.app}>
       <Header />
-      <div className={styles.main}>
+      <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1>Todo</h1>
           <h3>What is your main focus for today?</h3>
         </div>
-        <div className={styles.container}>
-          {!todos.length ? (
-            <h4>Today I will finish...</h4>
-          ) : (
+        <div className={styles.todoContainer}>
+          {todos.length ? (
             todos.map((todo, index) => (
               <Todo
                 id={todo.id}
@@ -119,10 +116,13 @@ function TodoList(props) {
                 updateTodoText={updateTodoText}
               />
             ))
+          ) : (
+            <h4 style={{ float: "left" }}>Today I will finish...</h4>
           )}
           <AddForm addTodo={addTodo} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
