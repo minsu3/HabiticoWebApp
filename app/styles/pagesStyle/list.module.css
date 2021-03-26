@@ -1,0 +1,100 @@
+/* todo-list.js */
+.app {
+  background-color: rgb(239, 214, 194);
+  height: 100%;
+}
+
+.container {
+  background-color: white;
+  margin: 0 auto;
+  width: 70%;
+  height: 100vh;
+}
+
+.todoContainer {
+  position: relative;
+  top: 100px;
+  background: #e8e8e8;
+  border-radius: 6px;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.titleContainer {
+  text-align: center;
+  position: relative;
+  top: 60px;
+}
+
+/*  todo.js  */
+.habit {
+  background: #fff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  padding: 15px 10px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  right: 10px;
+  display: inline-flex;
+}
+
+.button {
+  margin: 2px;
+  max-height: 40px;
+}
+
+.input {
+  position: relative;
+  top: 8px;
+}
+
+.updateInput {
+  position: absolute;
+  right: 240px;
+  top: 2px;
+  max-width: 250px;
+  width: 100%;
+}
+
+.textContainer {
+  word-wrap: break-word;
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.text {
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    background-color: white;
+    margin: 0 auto;
+    width: 500px;
+    height: 100vh;
+  }
+  .todoContainer {
+    position: relative;
+    top: 100px;
+    background: #e8e8e8;
+    border-radius: 6px;
+    padding: 10px;
+    width: 450px;
+  }
+  .text {
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+  }
+}
