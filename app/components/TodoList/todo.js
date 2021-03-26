@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import styles from "../../styles/TodoList/list.module.css";
+import styles from "../../styles/pagesStyle/list.module.css";
 
 function Todo({
   id,
@@ -48,9 +48,9 @@ function Todo({
   return (
     <div className={styles.habit}>
       <div className={styles.textContainer}>
-        <h2 id={index} style={lineThrough} className={styles.text}>
+        <div id={index} style={lineThrough} className={styles.text}>
           {todoText}
-        </h2>
+        </div>
       </div>
       <div className={styles.buttonContainer}>
         <Form onSubmit={(event) => onSubmit(event)}>
@@ -66,21 +66,24 @@ function Todo({
         </Form>
         <Button
           className={styles.button}
-          variant="outline-primary"
+          variant="primary"
+          size="sm"
           onClick={(event) => toggleBodyForm(event)}
         >
           Edit
         </Button>{" "}
         <Button
           className={styles.button}
-          variant="outline-primary"
+          variant="success"
+          size="sm"
           onClick={() => completeTodo(todo, index)}
         >
           Complete
         </Button>{" "}
         <Button
           className={styles.button}
-          variant="outline-primary"
+          variant="danger"
+          size="sm"
           onClick={() => removeTodo(todo, index)}
         >
           Delete

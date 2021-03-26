@@ -18,7 +18,7 @@ function AddForm({ addTodo }) {
           <Form.Control
             type="text"
             className="input"
-            placeholder="Enter todos here..."
+            placeholder="workout, job applications..."
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
