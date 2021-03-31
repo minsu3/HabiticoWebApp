@@ -11,13 +11,13 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link style={{ marginLeft: "10px" }} href="/todo-list">
-              To-do List
+              Todo List
             </Nav.Link>
             <Nav.Link style={{ marginLeft: "10px" }} href="/habit-tracker">
               Habit Tracker
             </Nav.Link>
-            <Nav.Link style={{ marginLeft: "10px" }} href="/focus">
-              Focus
+            <Nav.Link style={{ marginLeft: "10px" }} href="/pomodoro">
+              Pomodoro
             </Nav.Link>
           </Nav>
           <Nav>
