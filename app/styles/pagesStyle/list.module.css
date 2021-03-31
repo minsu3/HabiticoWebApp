@@ -25,6 +25,12 @@
   text-align: center;
   position: relative;
   top: 60px;
+  font-family: "Crimson Text", serif;
+}
+
+.subTitle {
+  text-align: center;
+  font-size: large;
 }
 
 /*  todo.js  */

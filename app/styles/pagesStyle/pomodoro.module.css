@@ -1,0 +1,12 @@
+.app {
+  background-color: rgb(224, 129, 117);
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  background-color: white;
+  margin: 0 auto;
+  width: 70%;
+  height: 100vh;
+}
