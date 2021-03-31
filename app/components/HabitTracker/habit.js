@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-// import Form from "react-bootstrap/Form";
-// import Quit from './Quit'
 import Button from "react-bootstrap/Button";
 
 function Habit({ id, text, index, quit, updateHabit, removeHabit }) {
-  const [formState, setFormState] = useState({
-    display: "none",
-    formValue: "",
-  });
+  const [formState, setFormState] = useState({});
 
   const toggleBodyForm = (event) => {
     event.preventDefault();
@@ -29,11 +24,18 @@ function Habit({ id, text, index, quit, updateHabit, removeHabit }) {
   //   toggleBodyForm(event);
   // };
 
-  const quitText = quit.text;
-  console.log("quitText: ", quitText);
+  // const quitText = quit.text;
+  // console.log("quitText: ", quitText);
 
   return (
     <div className="habit-list">
+      <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+      <button onClick={closeModal}>close</button>
+      <div>I am a modal</div>
+      <form>
+        <input />
+        <button>the modal</button>
+      </form>
       <h2 className="text">{quitText}</h2>
       <div>
         <Button
