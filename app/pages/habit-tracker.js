@@ -1,46 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import Insert from './Insert'
 import Habit from "../components/HabitTracker/habit";
-// import { updateHabit }  from "./HabitService";
 import Button from "react-bootstrap/Button";
 import Header from "../shared/header";
+import Footer from "../shared/footer";
+import Modal from "react-modal";
 
 import styles from "../styles/pagesStyle/habitTracker.module.css";
 
-// const HabitTracker = () => {
-//   return (
-//     <div className={styles.app}>
-//       <Header />
-//       <div className="habit-list">
-//         <h2 className="text">{quitText}</h2>
-//         <div>
-//           <Button
-//             className="button"
-//             variant="outline-primary"
-//             onClick={(event) => toggleBodyForm(event)}
-//           >
-//             Edit
-//           </Button>{" "}
-//           <Button
-//             className="button"
-//             variant="outline-primary"
-//             onClick={() => removeHabit(quit, index)}
-//           >
-//             Delete
-//           </Button>{" "}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
 function HabitTracker(props) {
-  const [quits, setQuit] = useState([
-    {
-      text: "",
-      id: null,
-    },
-  ]);
+  const [quits, setQuit] = useState([]);
   const [habit, setHabit] = useState("");
 
   useEffect(() => {
@@ -89,18 +57,69 @@ function HabitTracker(props) {
       .catch((err) => console.log("Could not delete habit \n", err));
   };
 
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const customStyle = {
+    overlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(255, 255, 255, 0.75)",
+    },
+    content: {
+      position: "absolute",
+      top: "90px",
+      left: "190px",
+      right: "190px",
+      bottom: "90px",
+      border: "1px solid #ccc",
+      background: "#fff",
+      overflow: "auto",
+      WebkitOverflowScrolling: "touch",
+      borderRadius: "4px",
+      outline: "none",
+      padding: "50px",
+    },
+  };
+
   return (
-    <div className={styles.mainQuit}>
-      <div className={styles.wrap}>
-        <h1 className={styles.title}>Quit Habits</h1>
-        <h2 className={styles.subTitle}>
-          Everyone has something they want to quit...
-        </h2>
+    <div className={styles.app}>
+      <Header />
+      <div className={styles.container}>
+        <div className={styles.titleWrapper}>
+          <h1>Quit Habits, Create Better Ones.</h1>
+          <h3 className={styles.subTitle}>
+            Everyone has something they want to quit...
+          </h3>
+        </div>
         {!quits.length ? (
-          <div className="buttonContainer">
-            <Button className="start" variant="secondary" href={"/insert"}>
-              Click here to get started
+          <div className={styles.buttonContainer}>
+            <Button onClick={openModal} variant="info">
+              Click here to get started!
             </Button>
+            <Modal
+              isOpen={modalIsOpen}
+              onAfterOpen={afterOpenModal}
+              onRequestClose={closeModal}
+              contentLabel="Example Modal"
+              style={customStyle}
+            >
+              <Habit />
+            </Modal>
           </div>
         ) : (
           quits.map((quit, index) => (
@@ -114,7 +133,7 @@ function HabitTracker(props) {
               removeHabit={removeHabit}
             />
           )) || (
-            <div className="buttonContainer">
+            <div className={styles.buttonContainer}>
               <Button
                 className="start"
                 variant="secondary"
@@ -127,6 +146,7 @@ function HabitTracker(props) {
           )
         )}
       </div>
+      <Footer />
     </div>
   );
 }

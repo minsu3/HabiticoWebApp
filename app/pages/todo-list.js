@@ -98,8 +98,10 @@ function TodoList(props) {
       <Header />
       <div className={styles.container}>
         <div className={styles.titleContainer}>
-          <h1>Todo</h1>
-          <h3>What is your main focus for today?</h3>
+          <h1>Create a Todo List.</h1>
+          <h3 className={styles.subTitle}>
+            What is your main focus for today?
+          </h3>
         </div>
         <div className={styles.todoContainer}>
           {todos.length ? (
@@ -117,7 +119,11 @@ function TodoList(props) {
               />
             ))
           ) : (
-            <h4 style={{ float: "left" }}>Today I will finish...</h4>
+            <div
+              style={{ float: "left", fontSize: "20px", marginBottom: "5px" }}
+            >
+              Today I will finish...
+            </div>
           )}
           <AddForm addTodo={addTodo} />
         </div>

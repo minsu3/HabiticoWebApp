@@ -13,17 +13,19 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
-          <h1 className={styles.title}>Welcome to Habitico! 👋</h1>
-          <p className={styles.description}>
-            A productivity app bundled up for maximum efficiency.
-          </p>
-          <div className={styles.grid}>
-            <a href="/sign-in" className={styles.card}>
-              <h3>Sign in to get started &rarr;</h3>
-            </a>
-          </div>
-        </main>
+        <div className={styles.backgroundWrapper}>
+          <main className={styles.main}>
+            <h1 className={styles.title}>Welcome to Habitico! 👋</h1>
+            <p className={styles.description}>
+              A productivity app bundled up for maximum efficiency.
+            </p>
+            <div className={styles.grid}>
+              <a href="/sign-in" className={styles.card}>
+                <div>Sign in to get started &rarr;</div>
+              </a>
+            </div>
+          </main>
+        </div>
       </div>
       <Footer />
     </div>
